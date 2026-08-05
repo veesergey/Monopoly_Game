@@ -2,7 +2,10 @@
 #include<iostream>
 #include"player.h"
 #include"Property.h"
-void windowSize()
+
+#ifdef _WIN32
+#include<windows.h>
+inline void windowSize()
 {
 	HANDLE buff = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD sizeOfBuff;
@@ -19,6 +22,33 @@ void windowSize()
 	int height = 900;
 	MoveWindow(console, r.left, r.top, width, height, TRUE);
 
+}
+#else
+inline void windowSize()
+{
+	//No-op: console window resizing is a Windows-only API
+}
+#endif
+
+//Clears the console screen on any platform
+inline void clearScreen()
+{
+#ifdef _WIN32
+	system("CLS");
+#else
+	system("clear");
+#endif
+}
+
+//Waits for a keypress before continuing, like Windows' "pause" command
+inline void pauseConsole()
+{
+#ifdef _WIN32
+	system("pause");
+#else
+	system("read -n 1 -s -p \"Press any key to continue . . .\"");
+	std::cout << std::endl;
+#endif
 }
 
 

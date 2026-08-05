@@ -1,0 +1,34 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: clang++ build Monopoly",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-std=c++17",
+                "-fcolor-diagnostics",
+                "-fansi-escape-codes",
+                "-g",
+                "${workspaceFolder}/Monopoly/main.cpp",
+                "${workspaceFolder}/Monopoly/Board.cpp",
+                "${workspaceFolder}/Monopoly/Game.cpp",
+                "${workspaceFolder}/Monopoly/Card.cpp",
+                "${workspaceFolder}/Monopoly/player.cpp",
+                "-o",
+                "${workspaceFolder}/Monopoly/monopoly"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/Monopoly"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Builds all Monopoly source files and links them into one executable."
+        }
+    ],
+    "version": "2.0.0"
+}

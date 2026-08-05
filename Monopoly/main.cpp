@@ -1,6 +1,6 @@
 #include<iostream>
 #include<iomanip>
-#include<windows.h>
+#include<cstdlib>
 #include<vector>
 #include<algorithm>
 #include<string>
@@ -21,7 +21,7 @@ int main()
 
 	monopoly.victory();
 
-	system("pause");
+	pauseConsole();
 
 	return 0;
 }
