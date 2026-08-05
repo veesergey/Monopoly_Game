@@ -2,6 +2,7 @@
 #include "player.h"
 #include "Property.h"
 #include "card.h"
+#include "functions.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -454,8 +455,8 @@ void Game::playerTurns() {
 			checkPlayers(playerList);
 			
 			while (choice != 5 || canEndTurn != true) {
-				system("pause");
-				system("CLS");
+				pauseConsole();
+				clearScreen();
 				printBoard(board, player);
 				std::cout << std::endl; //New Line
 				if (player.getPos() == 4 || player.getPos() == 10 || player.getPos() == 17 || player.getPos() == 23) {
@@ -478,14 +479,14 @@ void Game::playerTurns() {
 				switch (choice) {
 				case 0: //travel railroad. only prints the option when on railroad
 					if (canMove) {
-						system("CLS");
+						clearScreen();
 						printBoard(board, player);
 						travelRailRoad(player);
 						canEndTurn = true;
 						canMove = false;
 					}
 					else {
-						system("CLS");
+						clearScreen();
 						printBoard(board, player);
 						std::cout << std::endl;
 						std::cout << "\nYou already moved once this turn!" << std::endl;
@@ -494,7 +495,7 @@ void Game::playerTurns() {
 					break;
 				case 1: //Move
 					if (canMove) {
-						system("CLS");
+						clearScreen();
 						printBoard(board, player);
 						movePlayer(player);
 						checkNewTile(board, playerList, player);
@@ -502,20 +503,20 @@ void Game::playerTurns() {
 						canMove = false;
 					}
 					else {
-						system("CLS");
+						clearScreen();
 						printBoard(board, player);
 						std::cout << std::endl;
 						std::cout << "\nYou already moved once this turn!" << std::endl;
 					}
 					break;
 				case 2: //buy property
-					system("CLS");
+					clearScreen();
 					printBoard(board, player);
 					std::cout << std::endl;
 					player.buyProp(unownedProperty, board);
 					break;
 				case 3: // sell property
-					system("CLS");
+					clearScreen();
 					printBoard(board, player);
 					std::cout << std::endl;
 					//Dont change the above
@@ -524,20 +525,20 @@ void Game::playerTurns() {
 
 					break;
 				case 4: //upgrade prop
-					system("CLS");
+					clearScreen();
 					printBoard(board, player);
 					std::cout << std::endl;
 					player.buyHotel(board);
 					break;
 				case 5: //end turn
-					system("CLS");
+					clearScreen();
 					printBoard(board, player);
 					std::cout << std::endl;
 					if (canEndTurn) {
 						std::cout << "Ending Turn." << std::endl;
 					}
 					else if (!canEndTurn) {
-						system("CLS");
+						clearScreen();
 						printBoard(board, player);
 						std::cout << std::endl;
 						choice = 0;
@@ -546,7 +547,7 @@ void Game::playerTurns() {
 						
 					break;
 				case 7: //cheat menu
-					system("CLS");
+					clearScreen();
 					printBoard(board, player);
 					std::cout << std::endl;
 					std::cout << "Cheat Menu" << std::endl;

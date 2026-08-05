@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "functions.h"
 
 
 using namespace std;
@@ -41,7 +42,7 @@ int board()
 	for (int i = 0; i < board.size(); ++i)
 		cout << board[i];
 
-	system("pause");
+	pauseConsole();
 
 	return 0;
 }
